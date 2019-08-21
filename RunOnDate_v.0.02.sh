@@ -11,7 +11,7 @@
 fIlename=`basename "$0"`
 
 toDay=$((($(date +%s))/(3600*24))) #I am taking the Linux date ;)
-startDate=18199 #This will change by first run!!! original: #startDate=$toDay#
+startDate=$toDay #This will be changed by the first run!!! original: #startDate=$toDay#
 
 taskToExecute=$1
 
