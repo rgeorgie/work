@@ -32,7 +32,7 @@ if [[ $toDay == $startDate ]]; then
 
 else
 
-    echo "Next Date to execute is: $nextRunDate"
+    echo "Next Date to execute is: $startDate"
 fi
 
 echo "Done at `date`"
