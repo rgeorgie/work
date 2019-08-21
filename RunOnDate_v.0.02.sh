@@ -15,8 +15,7 @@ startDate=$toDay #This will be changed by the first run!!! original: #startDate=
 
 taskToExecute=$1
 
-
-daysToSkip=70
+daysToSkip=70 # change to desired days <<<<<
 
 nextRunDate=$(( startDate + daysToSkip ))
 
@@ -27,7 +26,7 @@ if [[ $toDay == $startDate ]]; then
 
     echo "Running the task";
 
-    . "$taskToExecute" &&
+    . "$taskToExecute" && #this will execute the shell script you provide
 
     sed -i -e "s/^startDate=$startDate/startDate=$nextRunDate/" $fIlename #overwriting the start date
 
