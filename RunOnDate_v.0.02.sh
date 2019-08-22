@@ -21,7 +21,7 @@ nextRunDate=$(( startDate + daysToSkip ))
 
 sed -i -e "s/^startDate=\$toDay/startDate=$startDate/" $fIlename
 
-if [[ $toDay == $startDate ]]; then
+if [[ $toDay -ge $startDate ]]; then
 
 
     echo "Running the task";
