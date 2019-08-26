@@ -27,7 +27,4 @@ if [[ $toDay -ge $startDate ]]; then
 
     sed -i -e "s/^startDate=$startDate/startDate=$nextRunDate/" $fIlename #overwriting the start date
 
-else
-
-    break
 fi
