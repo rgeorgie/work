@@ -34,6 +34,6 @@ if [[ $toDay -ge $startDate ]]; then
 
 else
 
-    echo "The task was skipped at `date`, $USER" | tee $dirName/notask.log
+    echo "The task was skipped at `date`, $USER" | tee -a $dirName/notask.log
 
 fi
