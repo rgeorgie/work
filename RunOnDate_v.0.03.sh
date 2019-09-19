@@ -1,9 +1,9 @@
 #! /bin/bash
 
-#Script to run scripts on any date after period
-#By Rosen Georgiev1 IBM Linux Support
-#version = 0.0003
-#Date = 21/8/2019
+#Script running tasks on any date after given period
+#By Rosen Georgiev1 IBM Linux & OSS Support
+#version = 0.0005
+#Date = 19/9/2019
 #You may execute this script with @daily option by cron
 #Please reed the comments!
 #To be executed as : this_script.sh other_task_script.sh
@@ -14,7 +14,7 @@ pAth=$dirName"/"$fIlename
 
 toDay=$((($(date +%s))/(3600*24))) #I am taking the Linux date ;)
 
-startDate=$toDay #This will be changed by the first run!!! original: #startDate=$toDay#
+startDate=18157 #This will be changed by the first run!!! original: #startDate=$toDay#
 
 taskToExecute=$1
 
@@ -26,8 +26,14 @@ sed -i -e "s/^startDate=\$toDay/startDate=$startDate/" $pAth
 
 if [[ $toDay -ge $startDate ]]; then
 
-    . "$taskToExecute" && #this will execute the shell script you provide
+    nextRunDate=$(( toDay + daysToSkip ))
+
+    . "$taskToExecute" & #this will execute the shell script you provide
 
     sed -i -e "s/^startDate=$startDate/startDate=$nextRunDate/" $pAth #overwriting the start date
+
+else
+
+    echo "The task was skipped at `date`, $USER" | tee $dirName/notask.log
 
 fi
